@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  web:
+    build: .
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgres://node@postgres:5432/gist
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+
+  postgres:
+    container_name: database
+    image: postgres:10.4
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: node-user
+      POSTGRES_DB: node

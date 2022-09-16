@@ -1,0 +1,60 @@
+{
+  "root": true,
+  "env": {
+    "es2020": true,  
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "import"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "lines-between-class-members": ["error", "never"],
+    "@typescript-eslint/prefer-string-starts-ends-with": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never",
+        "json": "always"
+      }
+    ],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ],
+    "@typescript-eslint/camelcase": ["off"]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts",".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {},
+      "node": {
+        "extensions": [".js",".jsx",".ts",".tsx"]
+      }
+    },
+    "import/ignore": [
+      "node_modules",
+      ".json"
+    ]
+  }
+}
